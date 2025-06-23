@@ -3,6 +3,8 @@ import { Box, Grid, Typography, Button,ListItemIcon } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add'; // Import AddIcon
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'; // Import DeleteOutlineIcon
 import ListAltIcon from '@mui/icons-material/ListAlt'; // Import ListAltIcon from Material-UI
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faListUl } from '@fortawesome/free-solid-svg-icons';
 
 // Define an interface for the data structure to ensure type safety
 interface StateData {
@@ -94,9 +96,8 @@ export default function App() {
       >
         {/* Title Typography */}
         <Typography variant="h6" sx={{ mb: { xs: 1, sm: 0 } }}>
-          <ListItemIcon sx={{ minWidth: '0.5rem', marginRight: '0.5rem' }}>
-            {/* Replaced FontAwesomeIcon with ListAltIcon from Material-UI */}
-            <ListAltIcon />
+          <ListItemIcon sx={{ minWidth: '1rem', marginRight: '0.5rem' }}>
+            {<FontAwesomeIcon icon={faListUl}/>}
           </ListItemIcon>
           States
         </Typography>
