@@ -4,6 +4,8 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
+import { faAddressBook } from '@fortawesome/free-solid-svg-icons';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // Define the common icon size
 const iconSize = '1.5rem';

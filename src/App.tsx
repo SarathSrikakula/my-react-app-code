@@ -1,30 +1,31 @@
-import React from 'react';
-import { Box, Grid, Typography, Button } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Grid, Typography, Button,ListItemIcon } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add'; // Import AddIcon
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'; // Import DeleteOutlineIcon
+import ListAltIcon from '@mui/icons-material/ListAlt'; // Import ListAltIcon from Material-UI
 
 // Define an interface for the data structure to ensure type safety
 interface StateData {
   state: string;
-  date: string;
-  code: string;
+  stateEffectiveDate: string;
+  stateEmployerCode: string;
   bureauId: string;
 }
 
 const data: StateData[] = [
-  { state: 'AL', date: '07/01/2025', code: '*******1100', bureauId: '917495866' },
-  { state: 'CA', date: '07/01/2025', code: '*******2190', bureauId: '102102101' },
-  { state: 'FL', date: '07/01/2025', code: '*******4567', bureauId: '202202200' },
-  { state: 'MA', date: '07/01/2025', code: '*******1689', bureauId: '301300302' },
-  { state: 'PA', date: '07/01/2025', code: '*******4578', bureauId: '403400403' },
-  { state: 'RI', date: '07/01/2025', code: '*******3498', bureauId: '500502501' },
+  { state: 'AL', stateEffectiveDate: '07/01/2025', stateEmployerCode: '*******1100', bureauId: '917495866' },
+  { state: 'CA', stateEffectiveDate: '07/01/2025', stateEmployerCode: '*******2190', bureauId: '102102101' },
+  { state: 'FL', stateEffectiveDate: '07/01/2025', stateEmployerCode: '*******4567', bureauId: '202202200' },
+  { state: 'MA', stateEffectiveDate: '07/01/2025', stateEmployerCode: '*******1689', bureauId: '301300302' },
+  { state: 'PA', stateEffectiveDate: '07/01/2025', stateEmployerCode: '*******4578', bureauId: '403400403' },
+  { state: 'RI', stateEffectiveDate: '07/01/2025', stateEmployerCode: '*******3498', bureauId: '500502501' },
 ];
 
 export default function App() {
   // State to manage the editing mode.
   // When isEditing is false: "Edit" button is visible, "Save" button is hidden, "ADD STATES IN BATCH" is hidden.
   // When isEditing is true: "Edit" button is hidden, "Save" button is visible, "ADD STATES IN BATCH" is visible, and the second grid appears.
-  const [isEditing, setIsEditing] = React.useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   // Define common styles for individual table cells
   const cellStyles = {
@@ -92,7 +93,14 @@ export default function App() {
         }}
       >
         {/* Title Typography */}
-        <Typography variant="h6" sx={{ mb: { xs: 1, sm: 0 } }}>States</Typography>
+        <Typography variant="h6" sx={{ mb: { xs: 1, sm: 0 } }}>
+          <ListItemIcon sx={{ minWidth: '0.5rem', marginRight: '0.5rem' }}>
+            {/* Replaced FontAwesomeIcon with ListAltIcon from Material-UI */}
+            <ListAltIcon />
+          </ListItemIcon>
+          States
+        </Typography>
+
         {/* Add States in Batch Button - Conditionally rendered based on isEditing state */}
         {isEditing && (
           <Button variant="outlined" size="small" sx={addStatesBatchButton}>
@@ -157,10 +165,10 @@ export default function App() {
                   <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>State: </Box>{row.state}
                 </Grid>
                 <Grid item xs={12} sm={3} sx={cellStyles}>
-                  <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>Effective Date: </Box>{row.date}
+                  <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>Effective Date: </Box>{row.stateEffectiveDate}
                 </Grid>
                 <Grid item xs={12} sm={3} sx={cellStyles}>
-                  <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>Employer Code: </Box>{row.code}
+                  <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>Employer Code: </Box>{row.stateEmployerCode}
                 </Grid>
                 <Grid item xs={12} sm={3.5} sx={cellStyles}>
                   <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>Bureau ID: </Box>{row.bureauId}
@@ -231,10 +239,10 @@ export default function App() {
                   <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>State: </Box>{row.state}
                 </Grid>
                 <Grid item xs={2.5} sm={2.5} sx={cellStyles}>
-                  <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>Effective Date: </Box>{row.date}
+                  <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>Effective Date: </Box>{row.stateEffectiveDate}
                 </Grid>
                 <Grid item xs={2.5} sm={2.5} sx={cellStyles}>
-                  <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>Employer Code: </Box>{row.code}
+                  <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>Employer Code: </Box>{row.stateEmployerCode}
                 </Grid>
                 <Grid item xs={2.5} sm={2.5} sx={cellStyles}>
                   <Box sx={{ display: { xs: 'inline', sm: 'none' } }}>Bureau ID: </Box>{row.bureauId}
